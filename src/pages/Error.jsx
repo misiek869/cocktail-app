@@ -12,7 +12,7 @@ const Error = () => {
 				<div>
 					<img src={img} alt='not found' />
 					<h3>Opps!</h3>
-					<p>The page that you are looking for probably doesn't exist</p>
+					<p>The page that you are looking for probably does not exist</p>
 					<Link to='/'>Back Home</Link>
 				</div>
 			</Wrapper>
