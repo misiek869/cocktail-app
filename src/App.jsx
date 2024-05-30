@@ -11,11 +11,11 @@ import {
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <h2>home page</h2>,
+		element: <HomeLayout />,
 	},
 	{
 		path: 'about',
-		element: <h3>about:)</h3>,
+		element: <About />,
 	},
 ])
 
