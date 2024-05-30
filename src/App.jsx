@@ -1,13 +1,9 @@
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+
 
 
 function App() {
-
-
-  return (
-    <>
-    
-    </>
-  )
+	return <></>
 }
 
 export default App
