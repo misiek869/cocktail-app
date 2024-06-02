@@ -40,9 +40,12 @@ const Newsletter = () => {
 					type='email'
 					name='email'
 					id='email'
-					defaultValue='smith'
+					defaultValue='test@test.com'
 				/>
 			</div>
+			<button className='btn' type='submit' style={{ marginTop: '0.25rem' }}>
+				Submit
+			</button>
 		</form>
 	)
 }
