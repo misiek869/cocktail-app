@@ -7,10 +7,17 @@ const newsletterUrl = 'https://www.course-api.com/cocktails-newsletter'
 export const action = async ({ request }) => {
 	const formData = await request.formData()
 	const data = Object.fromEntries(formData)
-	const response = await axios.post(newsletterUrl, data)
-	console.log(response)
-	toast.success('success, check your email')
-	return redirect('/')
+
+	try {
+		const response = await axios.post(newsletterUrl, data)
+		console.log(response)
+		toast.success('success, check your email')
+		return redirect('/')
+	} catch (error) {
+		console.log(error)
+		toast.error(error?.response?.data?.msg)
+		return error
+	}
 }
 
 const Newsletter = () => {
@@ -24,11 +31,10 @@ const Newsletter = () => {
 				</label>
 				<input
 					className='form-input'
-					// required
+					required
 					type='text'
 					name='name'
 					id='name'
-					defaultValue='john'
 				/>
 			</div>
 			{/* last name */}
@@ -38,11 +44,10 @@ const Newsletter = () => {
 				</label>
 				<input
 					className='form-input'
-					// required
+					required
 					type='text'
 					name='lastName'
 					id='lastName'
-					defaultValue='smith'
 				/>
 			</div>
 			{/* email */}
@@ -52,11 +57,10 @@ const Newsletter = () => {
 				</label>
 				<input
 					className='form-input'
-					// required
+					required
 					type='email'
 					name='email'
 					id='email'
-					defaultValue='test@test.com'
 				/>
 			</div>
 			<button className='btn' type='submit' style={{ marginTop: '0.25rem' }}>
