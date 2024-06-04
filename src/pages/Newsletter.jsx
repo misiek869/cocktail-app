@@ -10,11 +10,9 @@ export const action = async ({ request }) => {
 
 	try {
 		const response = await axios.post(newsletterUrl, data)
-		console.log(response)
-		toast.success('success, check your email')
+		toast.success(response.data.msg)
 		return redirect('/')
 	} catch (error) {
-		console.log(error)
 		toast.error(error?.response?.data?.msg)
 		return error
 	}

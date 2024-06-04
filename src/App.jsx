@@ -1,4 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
 import {
 	About,
 	Cocktail,
@@ -12,6 +15,15 @@ import {
 import { loader as landingLoader } from './pages/Landing'
 import { loader as singleCocktailLoader } from './pages/Cocktail'
 import { action as newsletterAction } from './pages/Newsletter'
+
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			// this is how long query client will be vaid
+			staleTime: 1000 * 60 * 5,
+		},
+	},
+})
 
 const router = createBrowserRouter([
 	{
@@ -45,7 +57,12 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-	return <RouterProvider router={router}></RouterProvider>
+	return (
+		<QueryClientProvider client={queryClient}>
+			<RouterProvider router={router}></RouterProvider>
+			<ReactQueryDevtools />
+		</QueryClientProvider>
+	)
 }
 
 export default App
